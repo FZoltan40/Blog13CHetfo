@@ -72,6 +72,8 @@ namespace Blog.Controllers
                 if (existingBlogger != null)
                 {
                     existingBlogger.Name = updateBloggerDto.Name;
+                    existingBlogger.Sex = updateBloggerDto.Sex;
+
                     context.Bloggers.Update(existingBlogger);
                     context.SaveChanges();
                     return StatusCode(200, existingBlogger);
@@ -80,6 +82,23 @@ namespace Blog.Controllers
             }
         }
 
+        [HttpDelete]
+        public ActionResult<object> Put(Guid id)
+        {
+            using (var context = new BlogDbContext())
+            {
+                var blogger = context.Bloggers.FirstOrDefault(x => x.Id == id);
+
+                if (blogger != null)
+                {
+
+                    context.Bloggers.Remove(blogger);
+                    context.SaveChanges();
+                    return StatusCode(200, new { message = "Sikeres Törlés." });
+                }
+                return NotFound(new { message = "Sikertelen Törlés." });
+            }
+        }
 
     }
 }
