@@ -61,7 +61,25 @@ namespace Blog.Controllers
             }
 
         }
+
+        [HttpPut]
+        public ActionResult<Blogger> Put(Guid id, UpdateBloggerDto updateBloggerDto)
+        {
+            using (var context = new BlogDbContext())
+            {
+                var existingBlogger = context.Bloggers.FirstOrDefault(x => x.Id == id);
+
+                if (existingBlogger != null)
+                {
+                    existingBlogger.Name = updateBloggerDto.Name;
+                    context.Bloggers.Update(existingBlogger);
+                    context.SaveChanges();
+                    return StatusCode(200);
+                }
+                return NotFound();
+            }
+        }
+
+
     }
-
-
 }
