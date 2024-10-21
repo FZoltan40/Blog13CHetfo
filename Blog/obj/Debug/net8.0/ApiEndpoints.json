@@ -117,5 +117,47 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Blog.Controllers.BlogRegistryController",
+    "Method": "Post",
+    "RelativePath": "blogregistry",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createBlogReistryDto",
+        "Type": "Blog.Models.Dto\u002BCreateBlogReistryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Blog.Models.BlogRegistry",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Blog.Controllers.BlogRegistryController",
+    "Method": "GetById",
+    "RelativePath": "blogregistry/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
