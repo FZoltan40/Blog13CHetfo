@@ -74,7 +74,7 @@ namespace Blog.Controllers
                     existingBlogger.Name = updateBloggerDto.Name;
                     context.Bloggers.Update(existingBlogger);
                     context.SaveChanges();
-                    return StatusCode(200);
+                    return StatusCode(200, existingBlogger);
                 }
                 return NotFound();
             }
